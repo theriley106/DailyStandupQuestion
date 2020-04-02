@@ -19,7 +19,8 @@
 	</div>
 	<div class="center-screen">
 		<center>
-			<h1 style="font-size: 400%;" id="result">0</h1>
+            <img id = "myImage" style='display:none;height:200px; width:200px;' src = "/static/loading.gif">
+			<h1 style="font-size: 400%;display:none;" id="result"></h1>
 		</center>
 	</div>
 	<div >
@@ -38,10 +39,22 @@ function httpGet(theUrl) {
     return xmlHttp.responseText;
 }
 
+function resetView() {
+    if (document.getElementById("myImage").style.display==="block"){
+        document.getElementById("myImage").style.display="none";
+        document.getElementById("result").style.display="block";
+    } else {
+        document.getElementById("myImage").style.display="block";
+        document.getElementById("result").style.display="none";
+    }
+}
+
 function newQuestion() {
+    resetView();
 	result = httpGet("/new");
     question = JSON.parse(result).question;
-	document.getElementById("result").innerHTML = "<h1 id='result'>" + question + "</h1>";
+    document.getElementById("result").innerHTML = "<h1 id='result'>" + question + "</h1>";
+    setTimeout(function(){ resetView()}, 500);
 }
 
 newQuestion();
