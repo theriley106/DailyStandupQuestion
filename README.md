@@ -1,5 +1,4 @@
-# DailyStandupQuestion
-DailyStandupQuestion.com
+<h1 align="center"><a href="http://www.DailyStandupQuestion.com">Daily Standup Question Generator</a></h1>
 
 
 ## Why is the capitalization inconsistent in the daily questions?
