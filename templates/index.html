@@ -1,79 +1,73 @@
 <html>
-<style>
-.center-screen {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-
-  min-height: 50vh;
-}
-</style>
-<head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
-<link href="/static/bootstrap-social.css" rel="stylesheet">
-</head>
-
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<div style="padding:10px;" >
-        <a class="pull-right btn btn-lg btn-social btn-github">
-    <span class="fa fa-github"></span> Github
-  </a>
-	</div>
-</nav>
-
-	<div class="center-screen">
-		<center>
+   <style>
+      .center-screen {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 50vh;
+      }
+   </style>
+   <head>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+      <link href="/static/bootstrap-social.css" rel="stylesheet">
+   </head>
+   <body>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+         <div style="padding:10px;" >
+            <a class="pull-right btn btn-lg btn-social btn-github">
+            <span class="fa fa-github"></span> Github
+            </a>
+         </div>
+      </nav>
+      <div class="center-screen">
+         <center>
             <img id = "myImage" style='display:none;height:200px; width:200px;' src = "/static/loading.gif">
-			<h1 style="font-size: 400%;display:none;" id="result"></h1>
-		</center>
-	</div>
-	<div >
-		<center>
-		<button onclick="newQuestion()" class="btn btn-primary btn-lg">New Question</button>
-		</center>
-	</div>
-</body><footer class="page-footer font-small blue navbar-fixed-bottom">
-
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="http://www.christopherlambert.me/"> Christopher Lambert</a>
-  </div>
-  <!-- Copyright -->
-
-</footer>
-
-<script>
-
-function httpGet(theUrl) {
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", theUrl, false );
-    xmlHttp.send( null );
-    return xmlHttp.responseText;
-}
-
-function resetView() {
-    if (document.getElementById("myImage").style.display==="block"){
-        document.getElementById("myImage").style.display="none";
-        document.getElementById("result").style.display="block";
-    } else {
-        document.getElementById("myImage").style.display="block";
-        document.getElementById("result").style.display="none";
-    }
-}
-
-function newQuestion() {
-    resetView();
-	result = httpGet("/new");
-    question = JSON.parse(result).question;
-    document.getElementById("result").innerHTML = "<h1 id='result'>" + question + "</h1>";
-    setTimeout(function(){ resetView()}, 500);
-}
-
-newQuestion();
-
-</script>
- </html>
+            <h1 style="font-size: 400%;display:none;" id="result"></h1>
+         </center>
+      </div>
+      <div >
+         <center>
+            <button onclick="newQuestion()" class="btn btn-primary btn-lg">New Question</button>
+         </center>
+      </div>
+   </body>
+   <footer class="page-footer font-small blue navbar-fixed-bottom">
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">© 2020 Copyright:
+         <a href="http://www.christopherlambert.me/"> Christopher Lambert</a>
+      </div>
+      <!-- Copyright -->
+   </footer>
+   <script>
+      function httpGet(theUrl) {
+          var xmlHttp = new XMLHttpRequest();
+          xmlHttp.open( "GET", theUrl, false );
+          xmlHttp.send( null );
+          return xmlHttp.responseText;
+      }
+      
+      function resetView() {
+          if (document.getElementById("myImage").style.display==="block"){
+              document.getElementById("myImage").style.display="none";
+              document.getElementById("result").style.display="block";
+          } else {
+              document.getElementById("myImage").style.display="block";
+              document.getElementById("result").style.display="none";
+          }
+      }
+      
+      function newQuestion() {
+          resetView();
+        result = httpGet("/new");
+          question = JSON.parse(result).question;
+          document.getElementById("result").innerHTML = "<h1 id='result'>" + question + "</h1>";
+          setTimeout(function(){ resetView()}, 500);
+      }
+      
+      newQuestion();
+      
+   </script>
+</html>
