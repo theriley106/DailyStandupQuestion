@@ -10,7 +10,11 @@ The questions are scraped from the following sites:
 - https://museumhack.com/list-icebreakers-questions
 - https://improb.com/icebreaker-questions-adults
 
-running the ```scrapeQuestions.py``` script will grab any new questions from these sites and save them locally.
+Running the ```scrapeQuestions.py``` script will grab any new questions from these sites and save them locally.
+
+### How is the site hosted?
+
+DailyStandupQuestion.com is deployed on a free [Heroku](https://www.heroku.com/) instance.
 
 ### Why is the capitalization inconsistent in the daily questions?
 
